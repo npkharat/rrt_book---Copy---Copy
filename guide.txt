@@ -1,0 +1,38 @@
+# Django Project Setup Instructions
+
+Follow these steps to set up and run the project.
+
+1. Clone the repository
+------------------------
+git clone <your-repo-url>
+cd <your-project-folder>
+
+2. Create and activate virtual environment
+-------------------------------------------
+# For Windows
+python -m venv venv
+venv\Scripts\activate
+
+3. Install dependencies
+------------------------
+pip install -r requirements.txt
+
+4. Run migrations
+-----------------
+python manage.py makemigrations
+python manage.py migrate
+
+5. Create a superuser (admin)
+-----------------------------
+python manage.py createsuperuser
+
+6. Run the development server
+------------------------------
+python manage.py runserver
+
+7. Access the app
+-----------------
+Open your browser and go to:
+http://127.0.0.1:8000/
+
+# Done ✅
