@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Components and Issues</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Google Font -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .component {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .component h2 {
+            margin-top: 0;
+            color: #007bff;
+        }
+
+        .issue-list {
+            margin-top: 20px;
+        }
+
+        .issue {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .issue h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .issue p {
+            margin: 10px 0;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .issue-meta {
+            font-size: 0.9em;
+            color: #888;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                width: 100%;
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Component and Issue Overview</h1>
+    {% for issue in components %}
+    <div class="component">
+        {{ issue.component.name }}
+        
+        <div class="issue-list">
+                    <div class="issue">
+                        <h3>Issue #{{ forloop.counter }}: {{ issue.description }}</h3>
+                        <p><strong>Troubleshooting:</strong> {{ issue.troubleshooting }}</p>
+                        <p><strong>Action Plan:</strong> {{ issue.action_plan }}</p>
+                        <p><strong>Error Message:</strong> {{ issue.error_message }}</p>
+                        <p><strong>Spare Part:</strong> {{ issue.spare_part }}</p>
+                        <p><strong>Advisory:</strong> {{ issue.advisory }}</p>
+                        <p><strong>Approved:</strong> {{ issue.is_approved|yesno:"Yes,No" }}</p>
+                        <p class="issue-meta"><strong>Created on:</strong> {{ issue.created_at|date:"F j, Y, H:i" }}</p>
+                    </div>
+                </div>
+                
+            </div>
+            {% endfor %}
+     
+        <a href="{% url 'issue_list' %}" class="btn">Back to Add New Component</a>
+</div>
+
+</body>
+</html>
